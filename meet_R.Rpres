@@ -37,7 +37,7 @@ renaming columns/variables, omitting bad samples or data points...do all of this
 - <small>You may be tempted to open up a data file and hand-edit. But if you get a revised version of that file, you’ll need to do it again. And it’ll be harder to figure out what it was that you did.</small>
 - <small>Some things are more cumbersome via code, but in the long run you’ll save time.</small>
 
-<div class="footer" style=font-size:75%;">Attribution: Steps toward reproducible research, Karl Broman, Biostatistics & Medical Informatics Univ. Wisconsin–Madison, kbroman.org, github.com/kbroman, @kwbroman, Slides: bit.ly/jsm2016
+<div class="footer" style=font-size:50%;">Attribution: Steps toward reproducible research, Karl Broman, Biostatistics & Medical Informatics Univ. Wisconsin–Madison, kbroman.org, github.com/kbroman, @kwbroman, Slides: bit.ly/jsm2016
 </div>
 
 
@@ -68,7 +68,7 @@ R is a *programming language designed for statistical computing*. Notable charac
 -   outstanding community support: mailing list, blogs, tutorials
 -   easy to extend by writing new functions
 
-<div class="footer" style=font-size:75%;">Attribution: http://tutorials.iq.harvard.edu/R/Rintro/Rintro.htm</div>
+<div class="footer" style=font-size:50%;">Attribution: http://tutorials.iq.harvard.edu/R/Rintro/Rintro.htm</div>
 
 
 the utility of R
@@ -78,50 +78,50 @@ It is free and popular, but what makes R worth learning? In a word: "packages". 
 
 For example:
 
-<div class="footer" style=font-size:75%;">Attribution: http://tutorials.iq.harvard.edu/R/Rintro/Rintro.htm</div>
+<div class="footer" style=font-size:50%;">Attribution: http://tutorials.iq.harvard.edu/R/Rintro/Rintro.htm</div>
 
 
 the utility of R
 ========================================================
 class: small-code
 
--   want to map the folks that created this slide?
+-   mapping and spatial analyses
 
-```{r fig.align='center', fig.height=5, fig.width=5}
+```{r fig.align='center', fig.height=4.5, fig.width=6}
   library(ggmap)
   nwbuilding <- geocode("1737 Cambridge Street Cambridge, MA 02138", source = "google") 
   ggmap(get_map("Cambridge, MA", zoom = 15)) + 
     geom_point(data=nwbuilding, size = 7, shape = 13, color = "red")
 ```
 
-<div class="footer" style=font-size:75%;">Attribution: http://tutorials.iq.<br/>harvard.edu/R/Rintro/Rintro.htm</div>
+<div class="footer" style=font-size:50%;">Attribution: http://tutorials.iq.harvard.edu/R/Rintro/Rintro.htm</div>
 
 
 the utility of R
 ========================================================
 class: small-code
 
--   want to forecast the population of Australia?
+-   statistics, of course
 
-```{r fig.align='center', fig.height=5, fig.width=5}
+```{r fig.align='center', fig.height=4.5, fig.width=6}
   library(forecast)
   fit <- auto.arima(austres)
   ## Projected numbers (in thousands) of Australian residents
   plot(forecast(fit), xlim=c(1985,1995), ylim=c(15000,19000))
 ```
 
-<div class="footer" style=font-size:75%;">Attribution: http://tutorials.iq.<br/>harvard.edu/R/Rintro/Rintro.htm</div>
+<div class="footer" style=font-size:50%;">Attribution: http://tutorials.iq.harvard.edu/R/Rintro/Rintro.htm</div>
 
 
 the utility of R
 ========================================================
 
-- create this presentation
+- create this presentation?
 
 Whatever you are trying to do, you are probably not the first to try doing it R. Chances are that someone has already written a package for that.
+
 
 
 interacting with R
 ================================
 
-the classic approach was to run R in a console

@@ -37,7 +37,7 @@ renaming columns/variables, omitting bad samples or data points...do all of this
 - <small>You may be tempted to open up a data file and hand-edit. But if you get a revised version of that file, you’ll need to do it again. And it’ll be harder to figure out what it was that you did.</small>
 - <small>Some things are more cumbersome via code, but in the long run you’ll save time.</small>
 
-<div class="footer" style=font-size:75%;">Attribution: Steps toward reproducible research, Karl Broman, Biostatistics & Medical Informatics Univ. Wisconsin–Madison, kbroman.org, github.com/kbroman, @kwbroman, Slides: bit.ly/jsm2016
+<div class="footer" style=font-size:50%;">Attribution: Steps toward reproducible research, Karl Broman, Biostatistics & Medical Informatics Univ. Wisconsin–Madison, kbroman.org, github.com/kbroman, @kwbroman, Slides: bit.ly/jsm2016
 </div>
 
 
@@ -68,7 +68,7 @@ R is a *programming language designed for statistical computing*. Notable charac
 -   outstanding community support: mailing list, blogs, tutorials
 -   easy to extend by writing new functions
 
-<div class="footer" style=font-size:75%;">Attribution: http://tutorials.iq.harvard.edu/R/Rintro/Rintro.htm</div>
+<div class="footer" style=font-size:50%;">Attribution: http://tutorials.iq.harvard.edu/R/Rintro/Rintro.htm</div>
 
 
 the utility of R
@@ -78,14 +78,14 @@ It is free and popular, but what makes R worth learning? In a word: "packages". 
 
 For example:
 
-<div class="footer" style=font-size:75%;">Attribution: http://tutorials.iq.harvard.edu/R/Rintro/Rintro.htm</div>
+<div class="footer" style=font-size:50%;">Attribution: http://tutorials.iq.harvard.edu/R/Rintro/Rintro.htm</div>
 
 
 the utility of R
 ========================================================
 class: small-code
 
--   want to map the folks that created this slide?
+-   mapping and spatial analyses
 
 
 ```r
@@ -97,14 +97,14 @@ class: small-code
 
 <img src="meet_R-figure/unnamed-chunk-1-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" />
 
-<div class="footer" style=font-size:75%;">Attribution: http://tutorials.iq.<br/>harvard.edu/R/Rintro/Rintro.htm</div>
+<div class="footer" style=font-size:50%;">Attribution: http://tutorials.iq.harvard.edu/R/Rintro/Rintro.htm</div>
 
 
 the utility of R
 ========================================================
 class: small-code
 
--   want to forecast the population of Australia?
+-   statistics, of course
 
 
 ```r
@@ -116,18 +116,18 @@ class: small-code
 
 <img src="meet_R-figure/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" style="display: block; margin: auto;" />
 
-<div class="footer" style=font-size:75%;">Attribution: http://tutorials.iq.<br/>harvard.edu/R/Rintro/Rintro.htm</div>
+<div class="footer" style=font-size:50%;">Attribution: http://tutorials.iq.harvard.edu/R/Rintro/Rintro.htm</div>
 
 
 the utility of R
 ========================================================
 
-- create this presentation
+- create this presentation?
 
 Whatever you are trying to do, you are probably not the first to try doing it R. Chances are that someone has already written a package for that.
+
 
 
 interacting with R
 ================================
 
-the classic approach was to run R in a console
