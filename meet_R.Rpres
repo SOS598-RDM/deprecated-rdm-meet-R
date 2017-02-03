@@ -116,7 +116,15 @@ class: small-code
 the utility of R
 ========================================================
 
-- create this presentation?
+* plotting: _ggplot2_
+* spatial analyses: _rgdal_, _sp_
+* build an interactive webpage: _shiny_
+* write a manuscript: _rmarkdown_, _knitr_
+* write a book: _bookdown_
+* text mining/analysis: _tm_
+* data management: _tidyverse_
+* web scrape: _rvest_
+* create this presentation?
 
 Whatever you are trying to do, you are probably not the first to try doing it R. Chances are that someone has already written a package for that.
 
