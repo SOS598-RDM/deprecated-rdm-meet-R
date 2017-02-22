@@ -1,0 +1,114 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r libraries, include=FALSE}
+library(tidyverse)
+```
+
+
+```{r import_data, include=FALSE}
+# Import the data using the read_csv function that is part of the tidyverse 
+# package. In most database systems, lack of data (not zero, but specifically a 
+# lack of data) are represented by "NULL". In R, lack of data are represented by
+# NA. Add an argument to convert any NULL or blank values to NA upon import. One
+# nice thing about the read_csv package is that it does not automatically
+# convert strings to factors as is the case for many other import methods.
+mcdowellArthropods <- read_csv('mcdowellArthropods.csv', na=c("NULL", ""))
+```
+
+
+```{r check_class}
+# inspect the data - what type of entity is this?
+class(mcdowellArthropods)
+```
+
+
+```{r check_structure}
+# inspect the data - what is the structure?
+str(mcdowellArthropods)
+```
+
+
+```{r unique_value}
+# inspect the unique values. In this case, we are using the apply function to 
+# "apply" the unique function over the margins of a data frame. the third
+# argument of the function ("unique") indicates that we want the unique values
+# of the columns. that we want the unique values of the columns is indicated by
+# the second argument ("2") of this function; we would have used a 1 if we
+# wanted the unique values of each row (but that would not make sense in this
+# case).
+apply(mcdowellArthropods, 2, unique)
+```
+
+
+```{r check_low_trapcount}
+# Why are some trapcounts so low? We need to take a closer look a those. we will
+# use the filter function in dplyr. Here, we are passing the mcdowellArthropods
+# data object to the filter function, which is part of the dplyr package. Dplyr
+# uses pipes (%>%) to link commands, a particularly nice feature when you are
+# performing many actions on an object. 
+mcdowellArthropods %>% 
+  filter(trapcount < 6) %>%
+  print(n = 50)
+
+# The base R version of performing the above (code below) is not onerous but
+# addressing the next chunk (orgs_by_season) would be far more painful without
+# pipes and dplyr.
+# print(mcdowellArthropods[mcdowellArthropods$trapcount < 6,], n = 50)
+```
+
+
+```{r orgs_per_season}
+
+# Since they were pulled from a database, the data are already in a long format,
+# which is preferable for analysis relative to a wide format as you might
+# encouter in a spreadsheet where samples are rows and taxa are spread across
+# columns. We do, however, still need to modify the data for our analyses.
+
+# First, filter the traps with a low trap count noted in the previous step.
+
+# Second, for our analyses, we can ignore the different size classes so all organisms,
+# regardless of size, can be summed for each sample. 
+
+# Third, we want to bin the sampling dates by season and extract the year for plotting.
+
+# Finally, we need to standardize the sampling effort to account for an
+# inconsistent number of traps across sampling events, here we will use the
+# average number of organisms per trap per, per season across the years of study.
+
+orgs_by_season <- mcdowellArthropods %>% 
+  filter(trapcount > 4) %>%
+  rowwise() %>% 
+    mutate(allsizes = sum(lt2mm, `_2_5mm`, `_5_10mm`, gt10mm, unsized, na.rm = T)) %>% 
+  ungroup() %>%
+  mutate(season = ifelse(as.integer(format(sample_date, format = '%m')) %in% c(11,12,1,2), 'winter',
+                         ifelse(as.integer(format(sample_date, format = '%m')) %in% c(3,4), 'spring',
+                                ifelse(as.integer(format(sample_date, format = '%m')) %in% c(5,6,7,8), 'summer',
+                                       ifelse(as.integer(format(sample_date, format = '%m')) %in% c(9,10), 'fall', NA))))) %>% 
+  mutate(year = format(sample_date, format = '%Y')) %>% 
+  group_by(site_id, season, year) %>%
+    summarise(average = sum(allsizes / trapcount)) %>%
+  ungroup()
+```
+
+
+```{r plot_by_seaons}
+
+# We will use ggplot to plot our data, here plotting each site in its own panel 
+ggplot(orgs_by_season, aes(x=year, y=average, fill = factor(season))) + 
+  geom_bar(stat = 'identity', position = 'dodge') + 
+  facet_wrap(~site_id) +
+  labs(x = "year") +
+  labs(y = "average number of organisms per trap per season") +
+  labs(fill = 'season') +
+  ggtitle("McDowell Sonoran Preserve ground-dwelling arthropods: 2012-2016") +
+  scale_fill_manual(values = c('#e6e6e6', '#cccccc', '#999999', '#000080')) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()
+  )
+```
+
+
