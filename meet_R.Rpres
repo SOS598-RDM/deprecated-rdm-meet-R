@@ -56,6 +56,7 @@ title: false
 </div>
 
 
+
 What is R?
 ========================================================
 
@@ -74,47 +75,9 @@ R is a *programming language designed for statistical computing*. Notable charac
 the utility of R
 ========================================================
 
-It is free and popular, but what makes R worth learning? In a word: "packages". If you have a data manipulation, analysis or visualization task, chances are good that there is an R package for that. 
+R is incredibly powerful in itself, but the utility of this language has grown phenomenally through the development of packages. 
 
 For example:
-
-<div class="footer" style=font-size:50%;">Attribution: http://tutorials.iq.harvard.edu/R/Rintro/Rintro.htm</div>
-
-
-the utility of R
-========================================================
-class: small-code
-
--   mapping and spatial analyses
-
-```{r fig.align='center', fig.height=4.5, fig.width=6}
-  library(ggmap)
-  nwbuilding <- geocode("1737 Cambridge Street Cambridge, MA 02138", source = "google") 
-  ggmap(get_map("Cambridge, MA", zoom = 15)) + 
-    geom_point(data=nwbuilding, size = 7, shape = 13, color = "red")
-```
-
-<div class="footer" style=font-size:50%;">Attribution: http://tutorials.iq.harvard.edu/R/Rintro/Rintro.htm</div>
-
-
-the utility of R
-========================================================
-class: small-code
-
--   statistics, of course
-
-```{r fig.align='center', fig.height=4.5, fig.width=6}
-  library(forecast)
-  fit <- auto.arima(austres)
-  ## Projected numbers (in thousands) of Australian residents
-  plot(forecast(fit), xlim=c(1985,1995), ylim=c(15000,19000))
-```
-
-<div class="footer" style=font-size:50%;">Attribution: http://tutorials.iq.harvard.edu/R/Rintro/Rintro.htm</div>
-
-
-the utility of R
-========================================================
 
 * plotting: _ggplot2_
 * spatial analyses: _rgdal_, _sp_
@@ -125,11 +88,4 @@ the utility of R
 * data management: _tidyverse_
 * web scrape: _rvest_
 * create this presentation?
-
-Whatever you are trying to do, you are probably not the first to try doing it R. Chances are that someone has already written a package for that.
-
-
-
-interacting with R
-================================
 
