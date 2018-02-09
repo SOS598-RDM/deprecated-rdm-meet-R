@@ -11,6 +11,16 @@ Rstudio != R
 6 ^ 3
 
 
+# assignment --------------------------------------------------------------
+
+All R statements where you create objects -- "assignments" -- have this form:
+objectName <- value
+and in my head I hear, e.g., "x gets 12".
+
+x <- 12 
+x <- 3 * 4
+
+
 # data structures ---------------------------------------------------------
 
 1. vector: sequence of data elements of the same type
@@ -70,16 +80,6 @@ ourFrame$b
 ourFrame$n[2]
 
 
-# assignment --------------------------------------------------------------
-
-All R statements where you create objects -- "assignments" -- have this form:
-objectName <- value
-and in my head I hear, e.g., "x gets 12".
-
-x <- 12 
-x <- 3 * 4
-
-
 # functions ---------------------------------------------------------------
 
 functionName(arg1 = val1, arg2 = val2, and so on)
@@ -110,11 +110,3 @@ convert farenheit to Kelvin:
 fahr_to_kelvin(32)
 
 waterFreezesKelvin <- fahr_to_kelvin(32)
-
-
-# workspace ---------------------------------------------------------------
-
-careful to treat it as temporary storage
-
-
-# packages ----------------------------------------------------------------
