@@ -1,10 +1,10 @@
 
 # import data -------------------------------------------------------------
 
-heightData <- read.csv('~/localRepos/meet_R/heights.csv',
+heightData <- read.csv('~/localRepos/meet_R/practice_data/heights.csv',
                        stringsAsFactors = F)
 
-heightData <- read.csv('~/localRepos/meet_R/heights.csv')
+heightData <- read.csv('~/localRepos/meet_R/practice_data/heights.csv')
 
 
 # inspect data ------------------------------------------------------------
@@ -79,6 +79,23 @@ heightsAnova$coefficients # examine the coefficients
 heightsAnova$coefficients["sexMale"] # extract slope
 alpha <- heightsAnova$coefficients["sexMale"] # our model coeff
 
+
+# just males, log-transformed ---------------------------------------------
+
+hist(log(heightData[heightData$sex == 'Male',]$height),
+     main = 'histogram of male heights',
+     xlab = 'inches')
+
+# Introduce Missing Data
+heightData[heightData$sex == 'Male',][c(5,7,9), ]$height <- NA
+
+head(heightData, n=20)
+
+hist(log(heightData[heightData$sex == 'Male' & !is.na(heightData$height),]$height),
+     main = 'histogram of male heights',
+     xlab = 'inches')
+
+....and then there were PIPES !
 
 # packages ----------------------------------------------------------------
 
