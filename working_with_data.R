@@ -82,7 +82,8 @@ alpha <- heightsAnova$coefficients["sexMale"] # our model coeff
 
 # just males, log-transformed ---------------------------------------------
 
-hist(log(heightData[heightData$sex == 'Male',]$height),
+hist(log(heightData[heightData$sex == 'Male',]$height,
+         10),
      main = 'histogram of male heights',
      xlab = 'inches')
 
@@ -91,11 +92,23 @@ heightData[heightData$sex == 'Male',][c(5,7,9), ]$height <- NA
 
 head(heightData, n=20)
 
-hist(log(heightData[heightData$sex == 'Male' & !is.na(heightData$height),]$height),
+hist(log(heightData[heightData$sex == 'Male' & !is.na(heightData$height),]$height,
+         10),
      main = 'histogram of male heights',
      xlab = 'inches')
 
-....and then there were PIPES !
+
+# let there be rock. no, pipes! -------------------------------------------
+
+heightData %>% 
+  filter(sex == 'Male') %>% 
+  filter(!is.na(height)) %>% 
+  mutate(height = log(height,
+                      10)) %>% 
+  with(hist(height,
+            main = 'histogram of male heights',
+            xlab = 'inches'))
+
 
 # packages ----------------------------------------------------------------
 
