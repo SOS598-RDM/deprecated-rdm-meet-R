@@ -48,13 +48,28 @@ tidy
 ========================================================
 * data structure
 * workflow
+* tool suite
 
 
 Hadley
 ========================================================
+title: false
 
-<div align="center" style="margin-top:15%;">
-  <img src="./figures/hadley.jpeg" width="30%"" style="background-color:transparent; border:0px; box-shadow:none;"></img>
+<div style="float:left; width:25%; margin-top:5%;">
+  <img src="./figures/hadley.jpeg" style="background-color:transparent; border:1px solid #000000; box-shadow:none;"></img>
+</div>
+
+<div style="float:right; width:75%; margin-top:5%;">
+  <img src="./figures/hadley_packages.png" style="background-color:transparent; border:1px solid #000000; box-shadow:none;"></img>
+</div>
+
+
+R thing
+========================================================
+title: false
+
+<div align="center" style="margin-top:0%;">
+  <img src="./figures/jeep_thing_sticker.jpg" width="100%"" style="background-color:transparent; border:0px; box-shadow:none;"></img>
 </div>
 
 
@@ -66,40 +81,20 @@ data structure: tidy data
 * each value in a cell
 
 
-data structure: tidy jeopardy: iris
+Tidy Jeopardy
 ========================================================
-```{r}
-head(iris)
-```
+title: false
 
-
-data structure: tidy jeopardy: mtcars
-========================================================
-```{r}
-head(mtcars)
-```
-
-
-data structure: tb data
-========================================================
-
-```{r libraries, include = FALSE}
-library(tidyverse)
-```
-
-<small>
-```{r }
-tb <- read_csv('~/localRepos/meet_R/practice_data/tb.csv')
-head(tb)
-```
-</small>
+<div align="center" style="margin-top:5%;">
+  <img src="./figures/tidy_jeopardy.jpg" width="100%"" style="background-color:transparent; border:0px; box-shadow:none;"></img>
+</div>
 
 
 open any textbook
 ========================================================
 title: false
 
-Open an intro to ANY statistics textbook...
+<p align="center" style="margin-top:10%; bold">Open an intro to ANY statistics textbook...</p>
 
 <div class="footer" style="font-size:60%;">
   <hr>
@@ -112,7 +107,7 @@ stats book preview
 title: false
 
 <div align="center" style="margin-top:0%;">
-  <img src="./figures/intro-stats.png" width="60%"" style="background-color:transparent; border:0px; box-shadow:none;"></img>
+  <img src="./figures/intro-stats.png" width="65%"" style="background-color:transparent; border:0px; box-shadow:none;"></img>
 </div>
 
 <div class="footer" style="font-size:60%;">
@@ -125,7 +120,7 @@ statistics starts once you have tidy data
 ========================================================
 title: false
 
-<p align="center" style="bold">...and you will find that statistics <font style="color:#686868; font-style:italic">(analysis, plotting - anything, really)</font> starts once you have tidy data</p>
+<p align="center" style="margin-top:10%; bold">...and you will find that statistics <font style="color:#686868; font-style:italic">(analysis, plotting - anything, really)</font> starts once you have tidy data</p>
 
 
 <div class="footer" style="font-size:60%;">
@@ -137,32 +132,51 @@ title: false
 workflow
 ========================================================
 
-<div align="center" style="margin-top:10%;">
-  <img src="./figures/tidy_workflow_philosophy.png" width="80%"" style="background-color:transparent; border:0px; box-shadow:none;"></img>
+<div align="center" style="margin-top:5%;">
+  <img src="./figures/tidy_workflow_philosophy.png" width="50%"" style="background-color:transparent; border:0px; box-shadow:none;"></img>
 </div>
 
+<small>
+It is often said that 80% of data analysis is spent on the process of cleaning and preparing
+the data
+<br>
+<font style="color:#686868; font-style:italic">Dasu and Johnson 2003</font>
+
+<br>
+
+All data are crap, it is just a matter of how much work you have to do to make them useful.
+<br>
+<font style="color:#686868; font-style:italic">good ol' Ben</font>
+</small>
 
 <div class="footer" style="font-size:60%;">
   <hr>
-  <p>"Grolemund, G. and H. Wickham. R for Data Science"</p>
+  <p>Grolemund, G. and H. Wickham. 2001. R for Data Science; Wickham, H. 2014. Tidy Data</p>
 </div>
 
 
-workflow
+write for humans
 ========================================================
 
-<div align="center" style="margin-top:10%;">
-  <img src="./figures/tidy_workflow_philosophy.png" width="80%"" style="background-color:transparent; border:0px; box-shadow:none;"></img>
+Programs must be written for people to read, and only incidentally for machines to execute. 
+<br>
+<font style="color:#686868; font-style:italic">Hal Abelson</font>
+
+<br>
+
+<div align="center">
+  <pre style="color:black; font-style:bold; font-size:32px;">
+  
+  new_thing <- thing %>%
+    do something to thing %>%
+    do something to thing %>%
+    do something to thing
+  </pre>
 </div>
-
-<br>
-<br>
-
-"all data are crap, it is just a matter of how much work you have to do to make them useful" Good 'ol Ben
 
 <div class="footer" style="font-size:60%;">
   <hr>
-  <p>"Grolemund, G. and H. Wickham. R for Data Science"</p>
+  <p>Tidyverse, Hadley Wickham, https://speakerdeck.com/hadley/tidyverse</p>
 </div>
 
 
