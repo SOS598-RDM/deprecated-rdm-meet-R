@@ -21,7 +21,7 @@ hist(heightData$height,
      main = 'histogram of heights',
      xlab = 'inches')
 
-# just males
+# just males 
 hist(heightData[heightData$sex == 'Male',]$height,
      main = 'histogram of male heights',
      xlab = 'inches')
