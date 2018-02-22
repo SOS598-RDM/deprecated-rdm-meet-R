@@ -15,12 +15,14 @@ library(tidyverse)
 # NA. Add an argument to convert any NULL or blank values to NA upon import. One
 # nice thing about the read_csv package is that it does not automatically
 # convert strings to factors as is the case for many other import methods.
+
 mcdowellArthropods <- read_csv('mcdowellArthropods.csv', na=c("NULL", ""))
 ```
 
 
 ```{r check_class}
 # inspect the data - what type of entity is this?
+
 class(mcdowellArthropods)
 ```
 
@@ -39,6 +41,7 @@ str(mcdowellArthropods)
 # the second argument ("2") of this function; we would have used a 1 if we
 # wanted the unique values of each row (but that would not make sense in this
 # case).
+
 apply(mcdowellArthropods, 2, unique)
 ```
 
@@ -49,6 +52,7 @@ apply(mcdowellArthropods, 2, unique)
 # data object to the filter function, which is part of the dplyr package. Dplyr
 # uses pipes (%>%) to link commands, a particularly nice feature when you are
 # performing many actions on an object. 
+
 mcdowellArthropods %>% 
   filter(trapcount < 6) %>%
   print(n = 50)
@@ -81,22 +85,25 @@ mcdowellArthropods %>%
 orgs_by_season <- mcdowellArthropods %>% 
   filter(trapcount > 4) %>%
   rowwise() %>% 
-    mutate(allsizes = sum(lt2mm, `_2_5mm`, `_5_10mm`, gt10mm, unsized, na.rm = T)) %>% 
+  mutate(allsizes = sum(lt2mm, `_2_5mm`, `_5_10mm`, gt10mm, unsized, na.rm = T)) %>% 
   ungroup() %>%
-  mutate(season = ifelse(as.integer(format(sample_date, format = '%m')) %in% c(11,12,1,2), 'winter',
-                         ifelse(as.integer(format(sample_date, format = '%m')) %in% c(3,4), 'spring',
-                                ifelse(as.integer(format(sample_date, format = '%m')) %in% c(5,6,7,8), 'summer',
-                                       ifelse(as.integer(format(sample_date, format = '%m')) %in% c(9,10), 'fall', NA))))) %>% 
-  mutate(year = format(sample_date, format = '%Y')) %>% 
+  mutate(
+    season = case_when(
+      as.integer(format(sample_date, format = '%m')) %in% c(11,12,1,2) ~ 'winter',
+      as.integer(format(sample_date, format = '%m')) %in% c(3,4) ~ 'spring',
+      as.integer(format(sample_date, format = '%m')) %in% c(5,6,7,8) ~ 'summer',
+      as.integer(format(sample_date, format = '%m')) %in% c(9,10) ~ 'fall'
+    ),
+    year = format(sample_date, format = '%Y')) %>% 
   group_by(site_id, season, year) %>%
-    summarise(average = sum(allsizes / trapcount)) %>%
+  summarise(average = sum(allsizes / trapcount)) %>%
   ungroup()
 ```
 
 
 ```{r plot_by_seaons}
-
 # We will use ggplot to plot our data, here plotting each site in its own panel 
+
 ggplot(orgs_by_season, aes(x=year, y=average, fill = factor(season))) + 
   geom_bar(stat = 'identity', position = 'dodge') + 
   facet_wrap(~site_id) +
