@@ -1,0 +1,73 @@
+---
+title: "Desert_Ridge_Weather"
+output: html_notebook
+---
+
+```{r libraries, include=FALSE}
+library(tidyverse)
+```
+
+Obtain 2017 hourly weather data for the Desert Ridge meteorological station from AZMET.
+https://cals.arizona.edu/azmet/27.htm
+
+```{r data_acquistion, include=FALSE}
+
+# https://cals.arizona.edu/azmet/27.htm
+
+DR_2017_hourly <- read_csv('https://cals.arizona.edu/azmet/data/2717rh.txt',
+                           col_names = F)
+
+```
+
+
+The raw data do not have column names. We need to add these to work with our data.
+https://cals.arizona.edu/azmet/raw2003.htm
+
+
+<!-- Data -->
+<!-- Point    Description    -->
+<!-- ------------------------------------------------------------------- -->
+<!-- 1   A   Year  -->
+<!-- 2   B   Day of Year (DOY) -->
+<!-- 3   C   Hour of Day -->
+<!-- 4   D   Air Temperature -->
+<!-- 5   E   Rel. Humidity -->
+<!-- 6   F   Vapor Pressure Deficit -->
+<!-- 7   G   Solar Radiation -->
+<!-- 8   H   Precipitation -->
+<!-- 9   I    4" Soil Temperature  ( = 2" prior to 1999 )  -->
+<!-- 10   J   20" Soil Temperature  ( = 4" prior to 1999 )  -->
+<!-- 11   K   Wind Speed (Ave) -->
+<!-- 12   L   Wind Vector Magnitude -->
+<!-- 13   M   Wind Vector Direction -->
+<!-- 14   N   Wind Direction Standard Deviation -->
+<!-- 15   O   Max Wind Speed -->
+<!-- 16   P   Reference Evapotranspiration (ETo) - Original AZMET -->
+<!-- ------------------------------------------------------------------- -->
+<!-- 17   Q   Actual Vapor Pressure       'New' : 2003 to Present -->
+<!-- 18   R   Dewpoint, Hourly Average    'New' : 2003 to Present -->
+
+
+```{r column_names}
+
+colnames(DR_2017_hourly) <- c(
+  "Year", 
+  "Day of Year (DOY)",
+  "Hour of Day",
+  "Air Temperature",
+  "Rel. Humidity",
+  "Vapor Pressure Deficit",
+  "Solar Radiation",
+  "Precipitation",
+  "4inch Soil Temperature", # " to inch
+  "20inch Soil Temperature", # " to inch
+  "Wind Speed (Ave)",
+  "Wind Vector Magnitude",
+  "Wind Vector Direction",
+  "Wind Direction Standard Deviation",
+  "Max Wind Speed",
+  "Reference Evapotranspiration (ETo)",
+  "Actual Vapor Pressure",
+  "Dewpoint, Hourly Average")
+
+```
