@@ -1,6 +1,6 @@
 # assignment: R
 
-Complete the analysis of Airbnb data in the repository assigned to you for the assignment. Refer to the instructions and analysis of San Diego Airbnb data for guidance [link](https://github.com/SOS598-RDM/airbnb %>% an-diego).
+Complete the analysis of Airbnb data in the repository assigned to you. Refer to the instructions and analysis of San Diego Airbnb data for guidance [link](https://github.com/SOS598-RDM/airbnb-san-diego).
 
 grading criteria:
 
